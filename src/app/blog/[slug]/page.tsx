@@ -5,7 +5,6 @@ import Image from "next/image"
 import { unified } from "unified";
 import rehypeSlug from "rehype-slug";
 import rehypeAutoLinkHeadings from "rehype-autolink-headings";
-import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSanitize from "rehype-sanitize";
 import remarkParse from "remark-parse";
 import remarkGfm from "remark-gfm";
