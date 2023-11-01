@@ -1,7 +1,7 @@
 export default function BlogFrontPage() {
     return (
         <>
-            about
+            Dla Malezzji
         </>
     )
 }
