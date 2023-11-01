@@ -4,7 +4,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="w-full p-4 flex flex-col items-center justify-center top-border-gradient">
-      <div className="max-w-[1000px] flex w-full pb-20 pt-4 gap-14">
+      <div className="max-w-[1000px] flex md:flex-row flex-col w-full pb-20 pt-4 gap-14">
         <div className="w-full flex flex-col gap-4">
           <div className="text-xl font-bold">
             TabiTabi
@@ -34,13 +34,12 @@ const Footer = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-[1300px] flex w-full p-2 items-center top-border-gradient">
+      <div className="max-w-[1300px] flex w-full p-2 items-center top-border-gradient justify-between">
         <p className="text-gray-600 text-sm">&copy; 2023 TabiTabi Development</p>
-        <div className="space-x-5 ml-auto">
-          <Link className="text-gray-600 hover:text-gray-400 text-sm transition-colors" href="/privacy">
-            Polityka Prywatności
-          </Link>
-        </div>
+        {(Math.random() * 10000) < 5 && <p className="text-gray-600 text-sm">Malezjaa was here</p>}
+        <Link className="text-gray-600 hover:text-gray-400 text-sm transition-colors" href="/privacy">
+          Polityka Prywatności
+        </Link>
       </div>
     </footer>
   );

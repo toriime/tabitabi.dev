@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link"
 import { useRef, useEffect, useState } from "react";
 
 const NavBar = () => {
@@ -39,34 +40,34 @@ const NavBar = () => {
         <div className="opacity-0 group-hover:opacity-100 absolute w-full h-full top-0 left-0 p-1 -translate-x-1 transition-opacity">
           <div
             ref={moverRef}
-            className="bg-slate-800/80 outline outline-1 outline-slate-600/80 rounded-full h-full p-2 transition-all duration-300"
+            className="bg-slate-800/80 outline outline-1 outline-slate-600/80 rounded-full h-full p-2 transition-all w-0 duration-300"
           ></div>
         </div>
         <div className="flex items-center justify-center gap-2 z-10 overflow-hidden">
-          <a
+          <Link
             href="/"
             className="nav-link h-full flex justify-center items-center py-2 px-4 rounded-full transition-colors"
             onMouseOver={(ev) => handleMouseOver(ev)}
           >
             Strona Główna
-          </a>
-          <a
+          </Link>
+          <Link
             href="/blog"
             className="nav-link h-full flex justify-center items-center py-2 px-4 rounded-full transition-colors"
             onMouseOver={(ev) => handleMouseOver(ev)}
           >
             Blog
-          </a>
-          <a
+          </Link>
+          <Link
             href="/about"
             className="nav-link h-full flex justify-center items-center py-2 px-4 rounded-full transition-colors"
             onMouseOver={(ev) => handleMouseOver(ev)}
           >
             O nas
-          </a>
+          </Link>
         </div>
       </div>
-      <button className={`transition-all duration-300 ${scrolled ? "translate-x-4 opacity-0" : ""}`}>Newsletter</button>
+      {/* <button className={`transition-all duration-300 ${scrolled ? "translate-x-4 opacity-0" : ""}`}>Newsletter</button> */}
     </nav>
   );
 };
