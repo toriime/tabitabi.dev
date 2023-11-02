@@ -3,19 +3,20 @@ import { Brush } from "lucide-react";
 export default function Home() {
   return (
     <MaxWidthWrapper>
-      <div className="w-full h-[calc(100vh-80px)] flex flex-col justify-center items-center">
-        <div className="header-badge mx-auto mb-4 flex max-w-fit items-center space-x-2 overflow-hidden rounded-full px-4 py-1">
-          <p className="header-text">TabiTabi Development</p>
-        </div>
-        <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-6xl mb-10">
-          Poczuj moc{" "}
-          <span className="magic-text-animate whitespace-nowrap">
-            idiotów
-          </span>
-        </h1>
-        <p className="text-slate-300 text-center text-lg md:text-xl font-semibold">
-          Coś o nas i historie z tworzenia strony.
-        </p>
+      <div className="w-full h-[calc(100vh-80px)] mt-10">
+        <div className="flex flex-col items-center">
+          <div className="header-badge mx-auto mb-4 flex max-w-fit items-center space-x-2 overflow-hidden rounded-full px-4 py-1">
+            <p className="header-text">TabiTabi Development</p>
+          </div>
+          <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-6xl mb-3 text-center text-title">
+            Poczuj moc{" "}
+            <span className="magic-text-animate whitespace-nowrap">
+              idiotów
+            </span>
+          </h1>
+          <p className="text-slate-300 text-center text-lg md:text-xl font-semibold">
+            Coś o nas i historie z tworzenia strony.
+          </p>
 
           <form className="flex gap-3 items-center m-3">
             <input
@@ -32,10 +33,10 @@ export default function Home() {
             </button>
           </form>
 
-          <div className="w-full p-[50px_82px_0px]">
+          <div className="relative w-full p-[100px_82px_0px]">
             <div className="relative z-10 flex flex-col">
               <h1 className="text-4xl font-semibold w-full md:text-5xl mb-3 text-slate-200 text-center sm:text-start">
-                Oglądaj, dodawaj i oceniaj anime na
+                Oglądaj, dodawaj i oceniaj anime
                 <span className="magic-text-animate whitespace-nowrap">
                   {" "}
                   Toriime.pl
@@ -43,8 +44,8 @@ export default function Home() {
               </h1>
             </div>
 
-            <div className="gap-5 flex flex-wrap mt-10 justify-center">
-              <div className="w-[22rem] isolate relative rounded-xl p-5 border-[1px] border-borderLight">
+            <div className="gap-[20px] grid grid-cols-1 sm:grid-cols-2 mt-10">
+              <div className="w-full isolate relative rounded-xl p-5 border-[1px] border-borderLight h-fulls">
                 <div className="flex flex-col items-center">
                   <Brush className="text-title" />
                   <h3 className="font-bold text-1xl text-center text-title">
@@ -57,7 +58,7 @@ export default function Home() {
                   {/* miejsce na zdjęcie */}
                 </div>
               </div>
-              <div className="w-[22rem] isolate relative rounded-xl p-5 border-[1px] border-borderLight h-fulls">
+              <div className="w-full isolate relative rounded-xl p-5 border-[1px] border-borderLight h-fulls">
                 <div className="flex flex-col items-center">
                   <Brush className="text-title" />
                   <h3 className="font-bold text-1xl text-center text-title">
@@ -70,7 +71,7 @@ export default function Home() {
                   {/* miejsce na zdjęcie */}
                 </div>
               </div>
-              <div className="w-[22rem] isolate relative rounded-xl p-5 border-[1px] border-borderLight h-fulls">
+              <div className="w-full isolate relative rounded-xl p-5 border-[1px] border-borderLight h-fulls">
                 <div className="flex flex-col items-center">
                   <Brush className="text-title" />
                   <h3 className="font-bold text-1xl text-center text-title">
@@ -86,6 +87,7 @@ export default function Home() {
             </div>
           </div>
         </div>
+      </div>
     </MaxWidthWrapper>
   );
 }
