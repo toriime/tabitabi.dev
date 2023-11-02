@@ -3,7 +3,7 @@ import { Brush } from "lucide-react";
 export default function Home() {
   return (
     <MaxWidthWrapper>
-      <div className="w-full mt-10">
+      <div className="w-full h-[calc(100vh-80px)] justify-center items-center flex">
         <div className="flex flex-col items-center">
           <div className="header-badge mx-auto mb-4 flex max-w-fit items-center space-x-2 overflow-hidden rounded-full px-4 py-1">
             <p className="header-text">TabiTabi Development</p>
@@ -33,10 +33,13 @@ export default function Home() {
             </button>
           </form>
 
-          <div className="w-full p-[50px_82px_0px]">
+          
+        </div>
+      </div>
+      <div className="relative w-full p-[100px_82px_0px]">
             <div className="relative z-10 flex flex-col">
               <h1 className="text-4xl font-semibold w-full md:text-5xl mb-3 text-slate-200 text-center sm:text-start">
-                Oglądaj, dodawaj i oceniaj anime na
+                Oglądaj, dodawaj i oceniaj anime
                 <span className="magic-text-animate whitespace-nowrap">
                   {" "}
                   Toriime.pl
@@ -86,8 +89,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
     </MaxWidthWrapper>
   );
 }

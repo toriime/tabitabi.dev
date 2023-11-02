@@ -46,7 +46,7 @@ const NavBar = () => {
 
   return (
     <nav
-      className={`max-w-50 z-50 fixed top-0 left-0 w-full h-20 py-4 px-8 outline outline-1 outline-b glass-navbar outline-borderLight bg-slate-600/5 flex items-center transition-all ${
+      className={`max-w-50 z-50 fixed top-0 left-0 w-full h-20 py-4 px-8 outline outline-1 outline-b outline-borderLight bg-slate-600/5 flex items-center transition-all ${
         scrolled ? "!outline-0 bg-transparent" : ""
       }`}
     >
