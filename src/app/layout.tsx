@@ -20,7 +20,7 @@ export default function RootLayout({ children }: Props) {
     <html lang="en">
       <body className={inter.className + "h-full"}>
         <NavBar />
-        <main className="mt-[80px]">{children}</main>
+        <main className="mt-[80px] mb-10">{children}</main>
         <Footer />
       </body>
     </html>

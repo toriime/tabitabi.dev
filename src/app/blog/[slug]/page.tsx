@@ -11,6 +11,7 @@ import remarkGfm from "remark-gfm";
 import remarkRehype from "remark-rehype";
 import emoji from "remark-emoji";
 import rehypeStringify from "rehype-stringify";
+import { notFound } from "next/navigation";
 
 type PageProps = {
   params: {
@@ -22,7 +23,7 @@ export default async function BlogPage({ params }: PageProps) {
   const post = postManager.getPost(params.slug);
 
   if (!post) {
-    return <div>404</div>;
+    return notFound();
   }
 
   const result = await unified()
@@ -43,7 +44,7 @@ export default async function BlogPage({ params }: PageProps) {
   return (
     <MaxWidthWrapper>
       <div className="flex max-w-4xl flex-col w-full py-8 px-2">
-        <div className="flex justify-center w-full flex-col gap-5 bottom-border-gradient pb-4">
+        <div className="flex justify-center w-full flex-col gap-5 pb-4">
           <h1 className="text-4xl font-extrabold tracking-tight dark:text-white md:leading-none lg:text-6xl">
             {post.title}
           </h1>

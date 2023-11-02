@@ -16,7 +16,9 @@ export default function BlogFrontPage() {
           {Authors.map((user, i) => (
             <div
               key={i}
-              className={"flex flex-col items-center justify-center relative"}
+              className={
+                "flex flex-col items-center justify-center relative p-4 border-[1px] border-borderLight rounded-lg"
+              }
             >
               <Image
                 src={user.avatar}
@@ -39,6 +41,7 @@ export default function BlogFrontPage() {
               <h3 className={"mt-1 text-center text-lg font-bold"}>
                 {user.username}
               </h3>
+              <p className="text-desc text-sm">{user.role}</p>
             </div>
           ))}
         </div>
