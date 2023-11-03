@@ -19,6 +19,7 @@ export type Post = {
 
 class PostManager {
   protected postsMap: Map<string, Post> = new Map();
+  protected tags: string[] = [];
 
   constructor() {
     this.getPosts()
@@ -28,6 +29,21 @@ class PostManager {
     const toReturn: Post[] = [];
     this.postsMap.forEach((value) => {
       toReturn.push(value);
+    });
+
+    return toReturn; 
+  }
+
+  public get tagsList(): string[] {
+    return this.tags;
+  }
+
+  public getPostsByTag(tag: string): Post[] {
+    const toReturn: Post[] = [];
+    this.postsMap.forEach((value) => {
+      if (value.tags.includes(tag)) {
+        toReturn.push(value);
+      }
     });
 
     return toReturn; 
@@ -52,6 +68,12 @@ class PostManager {
 
       const postAuthors = data.authors.map((author: string) => {
         return authors.find((a) => a.username === author);
+      });
+
+      data.tags.forEach((tag: string) => {
+        if (!this.tags.includes(tag)) {
+          this.tags.push(tag);
+        }
       });
 
       this.postsMap.set(slug, {
