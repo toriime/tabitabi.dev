@@ -16,7 +16,6 @@ export default function BlogFrontPage() {
         </div>
 
         <BlogList posts={postManager.posts} tags={postManager.tagsList} />
-
       </div>
     </MaxWidthWrapper>
   );
