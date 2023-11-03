@@ -1,5 +1,5 @@
-import Card from "@/components/card";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
+import BlogList from "./BlogList";
 import postManager from "@/lib/post";
 
 export default function BlogFrontPage() {
@@ -15,19 +15,8 @@ export default function BlogFrontPage() {
           </div>
         </div>
 
-        <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4">
-          {postManager.posts.map((post, index) => (
-            <Card
-              key={index}
-              authors={post.authors}
-              date={new Date(post.date)}
-              image={post.image!}
-              link={`/blog/${post.slug}`}
-              tags={post.tags}
-              title={post.title}
-            />
-          ))}
-        </div>
+        <BlogList posts={postManager.posts} tags={postManager.tagsList} />
+
       </div>
     </MaxWidthWrapper>
   );

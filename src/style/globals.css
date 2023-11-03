@@ -8,6 +8,10 @@
   --background-start-rgb: 5, 15, 51;
   --background-end-rgb: 4, 11, 53;
   --background-rgb: 46, 12, 105;
+  --input: 240 3.7% 15.9%;
+  --background: 240 10% 3.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
 
   --purple: rgb(123, 31, 162);
   --violet: rgb(103, 58, 183);
