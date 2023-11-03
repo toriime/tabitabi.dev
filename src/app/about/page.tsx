@@ -1,14 +1,19 @@
 import Authors from "@/authors.json";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
 import Image from "next/image";
+import Link from "next/link"
 
 export default function BlogFrontPage() {
   return (
     <MaxWidthWrapper>
       <div className="max-w-[1300px] flex flex-col gap-2 items-center mb-10 p-8">
         <h1 className="mb-4 text-3xl font-bold">O nas</h1>
-        TabiTabi Development to grupa developerów, którzy tworzą projekty
-        związane z anime. <br /> Poniżej znajdziesz developerów, którzy pracują
+        <p>TabiTabi Development to grupa hobbistycznych developerów, którzy tworzą projekty związane z anime.</p>
+        <p>
+          Obecnie naszym flagowym projektem jest <Link className="text-slate-300/80 underline hover:text-slate-300 transition-colors" href="https://toriime.pl">Toriime</Link>, o którym możecie 
+          dowiedzieć się więcej na <Link className="text-slate-300/80 underline hover:text-slate-300 transition-colors" href="/#toriime">stronie głównej</Link>.
+        </p>
+         <br /> Poniżej znajdziesz developerów, którzy pracują
         nad projektem.
         <div
           className={"mt-3 flex flex-wrap items-center justify-center gap-6"}
