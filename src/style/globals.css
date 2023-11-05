@@ -28,6 +28,12 @@ body {
   font-family: "Inter", "Ubuntu", "Roboto", "Oxygen", sans-serif;
 }
 
+ol,
+ul,
+menu {
+  list-style: disc !important;
+}
+
 @keyframes background-pan {
   from {
     background-position: 0% center;
@@ -116,6 +122,7 @@ body {
       var(--purple)
     );
     background-size: 200%;
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     white-space: nowrap;
