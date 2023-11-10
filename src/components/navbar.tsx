@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import Image from "next/image";
 import { useRef, useEffect, useState } from "react";
 
 const NavBar = () => {
@@ -53,9 +54,9 @@ const NavBar = () => {
       <h1
         className={`transition-all duration-300 ${
           scrolled ? "-translate-x-4 opacity-0" : ""
-        } hidden sm:block`}
+        } hidden sm:block h-full`}
       >
-        TabiTabi
+        <Image src="/wordmark.svg" className="" alt="TabiTabi" width={80} height={0} />
       </h1>
       <div
         ref={navRef}
