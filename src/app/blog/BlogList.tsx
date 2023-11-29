@@ -29,7 +29,7 @@ const BlogList = ({ posts, tags }: BlogListProps) => {
 
   return (
     <>
-      <div className="flex w-full items-center justify-end">
+      <div className="flex w-full items-center justify-start pl-4 pb-5 md:pl-0 md:pb-0 md:justify-end md:pr-4">
         <Select
           onValueChange={(value) => {
             if (value === "All") {

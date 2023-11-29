@@ -36,7 +36,7 @@ export default function Home() {
           </form>
         </div>
       </div>
-      <div className="relative w-full p-[100px_82px_0px]">
+      <div className="relative w-full p-[100px_52px_0px] ">
         {/* nagłówek */}
         <div className="relative z-10 flex flex-col w-full">
           <h1 className="w-full md:text-5xl mb-3 text-slate-200 text-center">
@@ -57,9 +57,9 @@ export default function Home() {
                 Unikatowy wygląd
               </h3>
               <p className="font-medium text-md text-center text-desc">
-                Toriime wyróżnia się na tle innych stron o anime, w szczególności
-                swoim wyglądem, który został dokładnie przemyślany przez Myst i zrealizowany
-                przez nas.
+                Toriime wyróżnia się na tle innych stron o anime, w
+                szczególności swoim wyglądem, który został dokładnie przemyślany
+                przez Myst i zrealizowany przez nas.
               </p>
               {/* miejsce na zdjęcie */}
             </div>
@@ -73,9 +73,10 @@ export default function Home() {
                 Funkcjonalność
               </h3>
               <p className="font-medium text-md text-center text-desc">
-                Toriime poza oglądaniem odcinków anime, w domyśle będzie posiadał również wiele
-                innych funkcji, takich jak np. listy anime, profile, własny system komentarzy,
-                czy wiele więcej. Bądzcie na biężąco, aby dowiedzieć się o następnych funkcjach!
+                Toriime poza oglądaniem odcinków anime, w domyśle będzie
+                posiadał również wiele innych funkcji, takich jak np. listy
+                anime, profile, własny system komentarzy, czy wiele więcej.
+                Bądzcie na biężąco, aby dowiedzieć się o następnych funkcjach!
               </p>
               {/* miejsce na zdjęcie */}
             </div>
@@ -89,8 +90,9 @@ export default function Home() {
                 Miejsce dla fansubberów
               </h3>
               <p className="font-medium text-md text-center text-desc">
-                Toriime ma być miejscem do dzielenia się swoimi fansubami, zarówno przez grupy tłumaczy,
-                jak i pojedyńczych tłumaczy. Z tym związane są różnorakie funkcje, które będą dla nich dostępne.
+                Toriime ma być miejscem do dzielenia się swoimi fansubami,
+                zarówno przez grupy tłumaczy, jak i pojedyńczych tłumaczy. Z tym
+                związane są różnorakie funkcje, które będą dla nich dostępne.
               </p>
               {/* miejsce na zdjęcie */}
             </div>
@@ -104,8 +106,10 @@ export default function Home() {
                 Otwartość
               </h3>
               <p className="font-medium text-md text-center text-desc">
-                Chcemy stworzyć miejsce, w którym każdy znajdzie swoje miejsce, nie ważne czy jesteś koneserem anime,
-                weeb-psychopatą, grupa fansubberską, czy po prostu fanem anime. Chcemy, abyś znalazł tu coś dla siebie.
+                Chcemy stworzyć miejsce, w którym każdy znajdzie swoje miejsce,
+                nie ważne czy jesteś koneserem anime, weeb-psychopatą, grupa
+                fansubberską, czy po prostu fanem anime. Chcemy, abyś znalazł tu
+                coś dla siebie.
               </p>
               {/* miejsce na zdjęcie */}
             </div>

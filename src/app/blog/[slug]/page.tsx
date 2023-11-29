@@ -43,18 +43,18 @@ export default async function BlogPage({ params }: PageProps) {
 
   return (
     <MaxWidthWrapper>
-      <div className="flex max-w-4xl flex-col w-full py-8 px-2">
+      <div className="flex max-w-4xl flex-col w-full py-8 px-4">
         <div className="flex justify-center w-full flex-col gap-5 pb-4">
           <h1 className="text-4xl font-extrabold tracking-tight dark:text-white md:leading-none lg:text-6xl">
             {post.title}
           </h1>
           <div className="flex items-center w-full flex-col">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 w-full">
               {post.image && (
                 <Image
                   alt={`${post.slug} cover image`}
                   src={post.image}
-                  className="rounded-[15px] shadow-lg max-w-4xl"
+                  className="rounded-[15px] shadow-lg w-full"
                   layout="responsive"
                   width={16}
                   height={9}
