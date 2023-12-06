@@ -16,6 +16,7 @@
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.291.0",
     "next": "14.0.0",
+    "nextjs-toploader": "^1.6.4",
     "react": "^18",
     "react-dom": "^18",
     "rehype-autolink-headings": "^7.0.0",
