@@ -49,7 +49,7 @@ export default async function BlogPage({ params }: PageProps) {
             {post.title}
           </h1>
           <div className="flex items-center w-full flex-col">
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 w-full">
               {post.image && (
                 <Image
                   alt={`${post.slug} cover image`}
