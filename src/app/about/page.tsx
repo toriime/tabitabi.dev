@@ -47,7 +47,7 @@ export default function BlogFrontPage() {
                 width={200}
                 height={200}
               />
-              {user.username === "sivy" && (
+              {user.username.toLowerCase() === "sivy" && (
                 <Image
                   src="/sivy.jpg"
                   alt={"sivy toys"}

@@ -36,7 +36,7 @@ export default function Home() {
           </form>
         </div>
       </div>
-      <div className="relative w-full p-[100px_82px_0px]">
+      <div className="relative w-full p-[100px_82px_0px]"  id="toriime">
         {/* nagłówek */}
         <div className="relative z-10 flex flex-col w-full">
           <h1 className="w-full md:text-5xl mb-3 text-slate-200 text-center">
