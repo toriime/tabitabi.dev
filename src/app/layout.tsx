@@ -19,6 +19,9 @@ type Props = {
 export default function RootLayout({ children }: Props) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/wordmark.svg" />
+      </head>
       <body className={inter.className + "h-full"}>
         <NextTopLoader
           color="#f48fb1"
