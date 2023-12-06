@@ -1,5 +1,5 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
   Select,
   SelectContent,
@@ -18,6 +18,7 @@ interface BlogListProps {
 
 const BlogList = ({ posts, tags }: BlogListProps) => {
   const [tag, setTag] = useState<string | undefined>(undefined);
+  const [active, setActive] = useState<boolean>(false);
 
   const filteredPosts = useMemo(() => {
     if (!tag) {
@@ -39,8 +40,9 @@ const BlogList = ({ posts, tags }: BlogListProps) => {
             setTag(value);
           }}
           defaultValue="All"
+          onOpenChange={(open) => setActive(open)}
         >
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-[180px] mb-5 mr-3">
             <SelectValue placeholder="Wybierz tag" />
           </SelectTrigger>
           <SelectContent>
@@ -61,6 +63,7 @@ const BlogList = ({ posts, tags }: BlogListProps) => {
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4">
         {filteredPosts.map((post, index) => (
           <Card
+            disabled={active}
             key={index}
             authors={post.authors}
             date={new Date(post.date)}
