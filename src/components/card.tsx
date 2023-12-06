@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 interface CardProps {
+  disabled?: boolean;
   title: string;
   authors: {
     username: string;
@@ -21,12 +22,14 @@ interface AuthorsProps {
   }[];
 }
 
-const Card = ({ title, image, link, tags, date, authors }: CardProps) => {
+const Card = ({ disabled, title, image, link, tags, date, authors }: CardProps) => {
   return (
     <Link href={link}>
       <div className="flex flex-col gap-3 items-start rounded-lg border-slate-600/80 hover:bg-slate-300/5 transition-colors duration-200 border shadow-sm w-full overflow-hidden">
         <div className="w-full">
-          <Image src={image} alt="post image" width={1920} height={1080} />
+          <button disabled={disabled}>
+            <Image src={image} alt="post image" width={1920} height={1080} />
+          </button>
         </div>
         <div className="flex flex-col p-3 gap-2 w-full">
           <div className="flex flex-wrap gap-2">
