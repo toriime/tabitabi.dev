@@ -11,7 +11,7 @@ export default function Home() {
           <h1 className="max-w-4xl text-5xl font-bold md:text-6xl lg:text-6xl mb-3 text-center text-title">
             Poczuj moc{" "}
             <span className="magic-text-animate whitespace-nowrap">
-              idiotów
+              mikusiów
             </span>
           </h1>
           <p className="text-slate-300 text-center text-lg md:text-xl font-semibold">

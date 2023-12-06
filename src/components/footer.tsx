@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="text-xl font-bold">TabiTabi</div>
           <div className="text-slate-300">
             Jesteśmy grupa osób zajmującą się rozpierdalaniem wszystkiego co
-            tworzymy.
+            tworzymy, i tak powstał TabiTabi Development.
           </div>
         </div>
         <div className="flex flex-col pr-4 gap-4">
