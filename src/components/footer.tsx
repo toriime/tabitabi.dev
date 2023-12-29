@@ -55,6 +55,12 @@ const Footer = () => {
             >
               Blog
             </Link>
+            <Link
+              href="https://github.com/toriime"
+              className="text-slate-300/80 hover:text-slate-300 transition-colors"
+            >
+              Github
+            </Link>
           </div>
         </div>
       </div>
