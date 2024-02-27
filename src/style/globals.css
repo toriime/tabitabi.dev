@@ -1,0 +1,268 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Oxygen:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 5, 15, 51;
+  --background-end-rgb: 4, 11, 53;
+  --background-rgb: 46, 12, 105;
+  --input: 240 3.7% 15.9%;
+  --background: 240 10% 3.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+
+  --purple: rgb(123, 31, 162);
+  --violet: rgb(103, 58, 183);
+  --pink: rgb(244, 143, 177);
+  --orange: rgb(238, 180, 113);
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  /* background: rgb(var(--background-start-rgb)); */
+  background: linear-gradient(180deg, rgb(27, 6, 65) 02%, #05051e 97%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Inter", "Ubuntu", "Roboto", "Oxygen", sans-serif;
+}
+
+ol,
+ul,
+menu {
+  list-style: disc !important;
+}
+
+@keyframes background-pan {
+  from {
+    background-position: 0% center;
+  }
+
+  to {
+    background-position: -200% center;
+  }
+}
+
+@layer components {
+  .gradient {
+    background: linear-gradient(
+      to right,
+      var(--purple),
+      var(--violet),
+      var(--pink),
+      var(--purple)
+    );
+    background-position: left;
+    background-size: 200%;
+    white-space: nowrap;
+    transition: background-position 300ms ease-in-out;
+    overflow: hidden;
+  }
+
+  .gradient:hover {
+    animation: background-pan 2s linear forwards infinite;
+  }
+
+  .top-border-gradient {
+    position: relative;
+  }
+
+  .top-border-gradient::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent 20%,
+      rgba(255, 255, 255, 0.2),
+      transparent 80%
+    );
+  }
+
+  .bottom-border-gradient {
+    position: relative;
+  }
+
+  .bottom-border-gradient::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "";
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent 20%,
+      rgba(255, 255, 255, 0.2),
+      transparent 80%
+    );
+  }
+
+  @keyframes background-pan {
+    from {
+      background-position: 0% top;
+    }
+
+    to {
+      background-position: 200% bottom;
+    }
+  }
+
+  .magic-text-animate {
+    animation: background-pan 3s linear infinite;
+    background: linear-gradient(
+      to right,
+      var(--purple),
+      var(--violet),
+      var(--pink),
+      var(--purple)
+    );
+    background-size: 200%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+  }
+
+  .magic-text {
+    background: linear-gradient(
+      to right,
+      var(--purple),
+      var(--violet),
+      var(--pink),
+      var(--purple)
+    );
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    white-space: nowrap;
+  }
+
+  .card {
+    border-radius: 1px;
+  }
+
+  .card:after {
+    content: "";
+    position: absolute;
+    top: -6px;
+    left: -6px;
+    height: calc(100% + 6px * 2);
+    width: calc(100% + 6px * 2);
+    background: linear-gradient(
+      to top left,
+      var(--purple),
+      var(--violet),
+      var(--pink),
+      var(--purple)
+    );
+    border-radius: 10px;
+    z-index: -1;
+    animation: animatedgradient 1s ease alternate infinite;
+    background-size: 300% 300%;
+  }
+
+  @keyframes animatedgradient {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+  }
+
+  .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    height: 400px;
+    width: 400px;
+    border: 3px solid #0000;
+    border-radius: 12px;
+    background: linear-gradient(#131219, #131219) padding-box,
+      linear-gradient(var(--angle), #070707, #687aff) border-box;
+    animation: 8s rotate linear infinite;
+  }
+
+  @keyframes rotate {
+    to {
+      --angle: 360deg;
+    }
+  }
+
+  @property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+}
+
+.header-badge {
+  border-radius: 999px;
+  width: -moz-max-content;
+  width: max-content;
+  background: linear-gradient(
+    135deg,
+    rgba(202, 183, 255, 0.04) 0%,
+    rgba(255, 155, 197, 0.04) 50%,
+    rgba(255, 202, 149, 0.04) 100%
+  );
+  position: relative;
+  box-shadow: 0 -4px 12px #d49eff1f inset;
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  transition: box-shadow 0.45s cubic-bezier(0.6, 0.6, 0, 1);
+}
+
+.header-badge:hover {
+  box-shadow: 0 4px 12px #d49eff1f inset;
+  cursor: pointer;
+}
+
+.header-text {
+  background-image: linear-gradient(
+    135deg,
+    #cab7ff 0%,
+    #ff9bc5 50%,
+    #ffca95 100%
+  );
+  background-image: linear-gradient(
+    135deg,
+    color(display-p3 0.7921568627 0.7176470588 1/1) 0%,
+    color(display-p3 1 0.6078431373 0.7725490196/1) 50%,
+    color(display-p3 1 0.7921568627 0.5843137255/1) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-navbar {
+  background: rgba(255, 255, 255, 0.01);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  transition: opacity 0.45s cubic-bezier(0.6, 0.6, 0, 1);
+}
+
+.light-border {
+  border: 1px solid rgba(226, 232, 255, 0.1);
+}
+
+.light-bg {
+  background: rgba(226, 232, 255, 0.1);
+}
+
+.button-gradient {
+  background-image: linear-gradient(
+    135deg,
+    color(display-p3 0.5725490196 0.4156862745 1/1) 0%,
+    color(display-p3 1 0.4666666667 0.6901960784/1) 50%,
+    color(display-p3 1 0.7019607843 0.4039215686/1) 100%
+  );
+}
