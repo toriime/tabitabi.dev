@@ -21,8 +21,7 @@ export default function Home() {
           <form className="flex gap-3 items-center m-3">
             <input
               type="text"
-              //disable white border on focus
-              className="rounded-xl font-semibold w-[70%] bg-transparent light-border text-white p-[10px_15px] focus:outline-none focus:border-borderLight disabled:opacity-50 disabled:cursor-not-allowed"
+              className="rounded-xl font-semibold w-[70%] bg-transparent light-border text-white p-[10px_15px] focus:border-borderLight focus:border-none focus:outline-none disabled:opacity-50 disabled:cursor-not-allowed"
               placeholder="Tymczasowo niedostępne"
               disabled={true}
             />

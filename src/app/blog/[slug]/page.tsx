@@ -12,12 +12,50 @@ import remarkRehype from "remark-rehype";
 import emoji from "remark-emoji";
 import rehypeStringify from "rehype-stringify";
 import { notFound } from "next/navigation";
+import type { Metadata } from "next";
 
 type PageProps = {
   params: {
     slug: string;
   };
 };
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { slug: string };
+}): Promise<Metadata | undefined> {
+  const post = postManager.getPost(params.slug);
+
+  if (!post) {
+    return;
+  }
+
+  let { title, description, image, date } = post;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      type: "article",
+      publishedTime: date.toISOString(),
+      url: `https://tabitabi.dev/blog/${post.slug}`,
+      images: [
+        {
+          url: image ?? "",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [image ?? ""],
+    },
+  };
+}
 
 export default async function BlogPage({ params }: PageProps) {
   const post = postManager.getPost(params.slug);
@@ -27,80 +65,80 @@ export default async function BlogPage({ params }: PageProps) {
   }
 
   const result = await unified()
-      .use(remarkParse)
-      .use(remarkRehype)
-      .use(remarkGfm)
-      .use(emoji)
-      .use(rehypeSlug)
-      .use(rehypeAutoLinkHeadings)
-      .use(rehypeSanitize)
-      .use(rehypeStringify)
-      .process(post.content);
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(remarkGfm)
+    .use(emoji)
+    .use(rehypeSlug)
+    .use(rehypeAutoLinkHeadings)
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
+    .process(post.content);
 
   const authors: string[] = [];
 
   post.authors.forEach((author) => authors.push(author.username));
 
   return (
-      <MaxWidthWrapper>
-        <div className="flex max-w-4xl flex-col w-full py-8 px-4">
-          <div className="flex justify-center w-full flex-col gap-5 pb-4">
-            <h1 className="text-4xl font-extrabold tracking-tight dark:text-white md:leading-none lg:text-6xl">
-              {post.title}
-            </h1>
-            <div className="flex items-center w-full flex-col">
-              <div className="flex flex-col gap-4 w-full">
-                {post.image && (
-                    <Image
-                        alt={`${post.slug} cover image`}
-                        src={post.image}
-                        className="rounded-[15px] shadow-lg w-full"
-                        layout="responsive"
-                        width={16}
-                        height={9}
-                        priority={true}
-                    />
-                )}
-                <div className="h-7 flex items-center flex-shrink-0 relative w-full">
-                  {post.authors.map((member, index) => (
-                      <Image
-                          key={member.username}
-                          src={member.avatar}
-                          className="rounded-full w-8 h-8 absolute"
-                          style={{
-                            left: `${index * 1.1}rem`,
-                            zIndex: post.authors.length + index,
-                          }}
-                          alt="author avatar"
-                          width={30}
-                          height={30}
-                      />
-                  ))}
+    <MaxWidthWrapper>
+      <div className="flex max-w-4xl flex-col w-full py-8 px-4">
+        <div className="flex justify-center w-full flex-col gap-5 pb-4">
+          <h1 className="text-4xl font-extrabold tracking-tight dark:text-white md:leading-none lg:text-6xl">
+            {post.title}
+          </h1>
+          <div className="flex items-center w-full flex-col">
+            <div className="flex flex-col gap-4 w-full">
+              {post.image && (
+                <Image
+                  alt={`${post.slug} cover image`}
+                  src={post.image}
+                  className="rounded-[15px] shadow-lg w-full"
+                  layout="responsive"
+                  width={16}
+                  height={9}
+                  priority={true}
+                />
+              )}
+              <div className="h-7 flex items-center flex-shrink-0 relative w-full">
+                {post.authors.map((member, index) => (
+                  <Image
+                    key={member.username}
+                    src={member.avatar}
+                    className="rounded-full w-8 h-8 absolute"
+                    style={{
+                      left: `${index * 1.1}rem`,
+                      zIndex: post.authors.length + index,
+                    }}
+                    alt="author avatar"
+                    width={30}
+                    height={30}
+                  />
+                ))}
 
-                  <div className="w-full flex justify-between">
+                <div className="w-full flex justify-between">
                   <span
-                      className="whitespace-nowrap text-slate-300/80"
-                      style={{
-                        marginLeft: `${16 * (post.authors.length - 1) + 40}px`,
-                      }}
+                    className="whitespace-nowrap text-slate-300/80"
+                    style={{
+                      marginLeft: `${16 * (post.authors.length - 1) + 40}px`,
+                    }}
                   >
                     {authors.join(", ")}
                   </span>
-                    <span className="text-slate-300/80">
+                  <span className="text-slate-300/80">
                     {post.date.toLocaleDateString()}
                   </span>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div className="pt-4 isolate">
-            <div
-                className="markdown-body"
-                dangerouslySetInnerHTML={{ __html: result.toString() }}
-            ></div>
-          </div>
         </div>
-      </MaxWidthWrapper>
+        <div className="pt-4 isolate">
+          <div
+            className="markdown-body"
+            dangerouslySetInnerHTML={{ __html: result.toString() }}
+          ></div>
+        </div>
+      </div>
+    </MaxWidthWrapper>
   );
 }

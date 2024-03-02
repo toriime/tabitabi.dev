@@ -21,7 +21,6 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  /* background: rgb(var(--background-start-rgb)); */
   background: linear-gradient(180deg, rgb(27, 6, 65) 02%, #05051e 97%);
   background-repeat: no-repeat;
   background-attachment: fixed;
