@@ -46,6 +46,11 @@ const NavBar = () => {
       href: "/about",
       analytic: "about-link-clicked",
     },
+    {
+      name: "Dołącz",
+      href: "https://volunteer.tabitabi.dev",
+      analytic: "volunteer-link-clicked",
+    },
   ];
 
   return (
@@ -96,10 +101,6 @@ const NavBar = () => {
             </div>
           </div>
         </div>
-        
-        <Link href={'https://volunteer.tabitabi.dev'}>
-          <button className={`transition-all duration-300 ${scrolled ? "translate-x-4 opacity-0" : ""}`}>Dołacz do TabiTabi</button>
-        </Link>
       </div>
     </nav>
   );
