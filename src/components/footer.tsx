@@ -17,6 +17,7 @@ const Footer = () => {
           <div className="flex flex-col gap-2 whitespace-nowrap">
             <a
               href="https://toriime.pl"
+              data-umami-event="toriime-link-clicked"
               className="text-slate-300/80 hover:text-slate-300 transition-colors"
             >
               Toriime
@@ -28,12 +29,14 @@ const Footer = () => {
           <div className="flex flex-col gap-2 whitespace-nowrap">
             <Link
               href="https://discord.gg/TgzFytuvFs"
+              data-umami-event="discord-link-clicked"
               className="text-slate-300/80 hover:text-slate-300 transition-colors"
             >
               Serwer Discord
             </Link>
             <Link
               href="mailto:administracja@mail.toriime.pl"
+              data-umami-event="email-link-clicked"
               className="text-slate-300/80 hover:text-slate-300 transition-colors"
             >
               E-Mail
@@ -45,18 +48,21 @@ const Footer = () => {
           <div className="flex flex-col gap-2 whitespace-nowrap">
             <Link
               href="/about"
+              data-umami-event="footer-about-link-clicked"
               className="text-slate-300/80 hover:text-slate-300 transition-colors"
             >
               O nas
             </Link>
             <Link
               href="/blog"
+              data-umami-event="footer-blog-link-clicked"
               className="text-slate-300/80 hover:text-slate-300 transition-colors"
             >
               Blog
             </Link>
             <Link
               href="https://github.com/toriime"
+              data-umami-event="footer-github-link-clicked"
               className="text-slate-300/80 hover:text-slate-300 transition-colors"
             >
               Github
@@ -73,6 +79,7 @@ const Footer = () => {
         )}
         <Link
           className="text-gray-600 hover:text-gray-400 text-sm transition-colors"
+          data-umami-event="privacy-link-clicked"
           href="/privacy"
         >
           Polityka Prywatności

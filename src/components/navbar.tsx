@@ -34,14 +34,17 @@ const NavBar = () => {
     {
       name: "Strona Główna",
       href: "/",
+      analytic: "home-link-clicked",
     },
     {
       name: "Blog",
       href: "/blog",
+      analytic: "blog-link-clicked",
     },
     {
       name: "O nas",
       href: "/about",
+      analytic: "about-link-clicked",
     },
   ];
 
@@ -57,7 +60,13 @@ const NavBar = () => {
             scrolled ? "-translate-x-4 opacity-0" : ""
           } hidden sm:block h-full`}
         >
-          <Image src="/wordmark.svg" className="" alt="TabiTabi" width={80} height={0} />
+          <Image
+            src="/wordmark.svg"
+            className=""
+            alt="TabiTabi"
+            width={80}
+            height={0}
+          />
         </h1>
         <div className="absolute w-full flex items-center top-0 left-0">
           <div
@@ -76,6 +85,7 @@ const NavBar = () => {
               {links.map((link, index) => (
                 <Link
                   href={link.href}
+                  data-umami-event={link.analytic}
                   className="border-borderLight h-full flex justify-center items-center py-2 px-4 rounded-full transition-colors text-slate-300"
                   onMouseOver={(ev) => handleMouseOver(ev)}
                   key={index}

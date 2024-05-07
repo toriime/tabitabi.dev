@@ -16,6 +16,7 @@ export default function BlogFrontPage() {
           Obecnie naszym flagowym projektem jest{" "}
           <Link
             className="text-slate-300/80 underline hover:text-slate-300 transition-colors"
+            data-umami-event="about-page-toriime-link-clicked"
             href="https://toriime.pl"
           >
             Toriime
@@ -23,6 +24,7 @@ export default function BlogFrontPage() {
           , o którym możecie dowiedzieć się więcej na{" "}
           <Link
             className="text-slate-300/80 underline hover:text-slate-300 transition-colors"
+            data-umami-event="about-page-toriime-info-clicked"
             href="/#toriime"
           >
             stronie głównej

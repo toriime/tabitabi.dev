@@ -22,9 +22,17 @@ interface AuthorsProps {
   }[];
 }
 
-const Card = ({ disabled, title, image, link, tags, date, authors }: CardProps) => {
+const Card = ({
+  disabled,
+  title,
+  image,
+  link,
+  tags,
+  date,
+  authors,
+}: CardProps) => {
   return (
-    <Link href={link}>
+    <Link data-umami-event={`${link}-clicked`} href={link}>
       <div className="flex flex-col gap-3 items-start rounded-lg border-slate-600/80 hover:bg-slate-300/5 transition-colors duration-200 border shadow-sm w-full overflow-hidden">
         <div className="w-full">
           <button disabled={disabled}>

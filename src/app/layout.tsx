@@ -4,6 +4,7 @@ import "@/style/globals.css";
 import NavBar from "@/components/navbar";
 import Footer from "@/components/footer";
 import NextTopLoader from "nextjs-toploader";
+import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -98,6 +99,11 @@ export default function RootLayout({ children }: Props) {
         <NavBar />
         <main className="mt-[80px] mb-10">{children}</main>
         <Footer />
+        <Script
+          defer
+          src="https://analytics.tabitabi.dev/script.js"
+          data-website-id="5d6cbb87-b955-4e1d-b5e1-41587c1b0392"
+        />
       </body>
     </html>
   );
