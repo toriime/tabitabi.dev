@@ -87,7 +87,9 @@ const NavBar = () => {
           </div>
         </div>
         
-        {/* <button className={`transition-all duration-300 ${scrolled ? "translate-x-4 opacity-0" : ""}`}>Newsletter</button> */}
+        <Link href={'https://volunteer.tabitabi.dev'}>
+          <button className={`transition-all duration-300 ${scrolled ? "translate-x-4 opacity-0" : ""}`}>Dołacz do TabiTabi</button>
+        </Link>
       </div>
     </nav>
   );
