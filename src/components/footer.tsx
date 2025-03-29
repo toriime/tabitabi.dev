@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import React from "react";
 
@@ -72,7 +73,7 @@ const Footer = () => {
       </div>
       <div className="max-w-[1300px] flex w-full p-2 items-center top-border-gradient justify-between">
         <p className="text-gray-600 text-sm">
-          &copy; 2023 TabiTabi Development
+          &copy; {new Date().getFullYear()} TabiTabi Development
         </p>
         {Math.random() * 10000 < 5 && (
           <p className="text-gray-600 text-sm">Malezjaa was here</p>
