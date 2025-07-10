@@ -25,6 +25,6 @@ const config: Config = {
         popoverForeground: `hsl(var(--popover-foreground))`,
       },
     },
-  },
+  }
 };
 export default config;
