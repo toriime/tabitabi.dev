@@ -5,6 +5,8 @@ import { buildConfig } from 'payload'
 import { Posts } from '@/collections/posts'
 import { Users } from '@/collections/users'
 import { Media } from '@/collections/media'
+import { Tags } from '@/collections/tags'
+import { s3Storage } from '@payloadcms/storage-s3'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
@@ -12,12 +14,29 @@ export default buildConfig({
 
   }),
   
+  plugins: [
+    s3Storage({
+      collections: {
+        media: true
+      },
+      bucket: process.env.PAYLOAD_S3_BUCKET || '',
+      config: {
+        credentials: {
+          accessKeyId: process.env.PAYLOAD_S3_ACCESS_KEY_ID || '',
+          secretAccessKey: process.env.PAYLOAD_S3_SECRET_ACCESS_KEY || '',
+        },
+        region: process.env.PAYLOAD_S3_REGION || '',
+        endpoint: process.env.PAYLOAD_S3_ENDPOINT || '',
+      }
+    })
+  ],
 
   // Define and configure your collections in this array
   collections: [
     Users,
     Media,
-    Posts
+    Posts,
+    Tags
   ],
 
   // Your Payload secret - should be a complex and secure string, unguessable

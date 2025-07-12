@@ -1,3 +1,4 @@
+import { generateDraftPreviewURL } from "@/lib/utils"
 import { CollectionConfig } from "payload";
 
 export const Posts: CollectionConfig = {
@@ -5,7 +6,7 @@ export const Posts: CollectionConfig = {
   admin: {
     useAsTitle: "title",
     livePreview: {
-      url: ({ data }) => `/blog/${data.slug}`,
+      url: ({ data, collectionConfig }) => generateDraftPreviewURL(data.slug, collectionConfig!.slug),
     },
   },
   access: {
@@ -23,7 +24,11 @@ export const Posts: CollectionConfig = {
     authors: {
         avatar: true,
         username: true,
-    }
+    },
+    tags: {
+      slug: true,
+      name: true,
+    },
   },
   fields: [
     {
@@ -47,6 +52,13 @@ export const Posts: CollectionConfig = {
       name: "authors",
       type: "relationship",
       relationTo: "users",
+      hasMany: true,
+      required: true,
+    },
+    {
+      name: "tags",
+      type: "relationship",
+      relationTo: "tags",
       hasMany: true,
       required: true,
     },

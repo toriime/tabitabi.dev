@@ -25,6 +25,12 @@ const config: Config = {
         popoverForeground: `hsl(var(--popover-foreground))`,
       },
     },
-  }
+  },
+  safelist: [
+    'text-xl',
+    'text-2xl',
+    'text-3xl',
+    'text-4xl',
+  ]
 };
 export default config;

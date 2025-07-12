@@ -1,17 +1,26 @@
 import "@/style/markdown.css";
 
-import { notFound } from "next/navigation";
-import { getPayload } from "payload";
-
-import MaxWidthWrapper from "@/components/max-width-wrapper";
-import Image from "next/image";
-import configPromise from "@payload-config";
-import { draftMode } from "next/headers";
-import { cache } from "react";
+import { convertLexicalToMarkdown, editorConfigFactory } from "@payloadcms/richtext-lexical"
 import { generatePageMetadata } from "@payloadcms/next/views";
-import { RichText } from "@payloadcms/richtext-lexical/react";
+import { LivePreviewListener } from "@/components/livePreviewListener";
 import { Media, User } from "@/payload-types";
-import { LivePreviewListener } from "@/components/livePreviewListener"
+import { getPayload } from "payload";
+import { draftMode } from "next/headers";
+import { notFound } from "next/navigation";
+import { unified } from "unified";
+import { cache } from "react";
+
+import rehypeAutoLinkHeadings from "rehype-autolink-headings";
+import rehypeStringify from "rehype-stringify";
+import MaxWidthWrapper from "@/components/max-width-wrapper";
+import rehypeSanitize from "rehype-sanitize";
+import configPromise from "@payload-config";
+import remarkRehype from "remark-rehype";
+import remarkParse from "remark-parse";
+import rehypeSlug from "rehype-slug";
+import remarkGfm from "remark-gfm";
+import emoji from "remark-emoji";
+import Image from "next/image";
 
 type PageProps = {
   params: Promise<{
@@ -80,7 +89,10 @@ export default async function BlogPage({ params }: PageProps) {
 
   const authors: User[] = [];
 
-  if (post.authors.length > 0 && !Object.keys(post.authors[0]).includes("username")) {  
+  if (
+    post.authors.length > 0 &&
+    !Object.keys(post.authors[0]).includes("username")
+  ) {
     // If the authors are not User objects, we need to fetch them
     const payload = await getPayload({ config: configPromise });
     const authorIds = post.authors.map((author) =>
@@ -93,8 +105,8 @@ export default async function BlogPage({ params }: PageProps) {
       draft,
       where: {
         id: {
-          in: authorIds
-        }
+          in: authorIds,
+        },
       },
       overrideAccess: draft,
       pagination: false,
@@ -104,6 +116,22 @@ export default async function BlogPage({ params }: PageProps) {
   } else {
     authors.push(...(post.authors as User[]));
   }
+
+  const markdownContent = convertLexicalToMarkdown({ data: post.content, editorConfig: await editorConfigFactory.default({
+    config: await configPromise,
+  }) });
+
+  // najbardziej pojebany pomysł ever
+  const result = await unified()
+    .use(remarkParse)
+    .use(remarkRehype)
+    .use(remarkGfm)
+    .use(emoji)
+    .use(rehypeSlug)
+    .use(rehypeAutoLinkHeadings)
+    .use(rehypeSanitize)
+    .use(rehypeStringify)
+    .process(markdownContent);
 
   return (
     <MaxWidthWrapper>
@@ -161,7 +189,10 @@ export default async function BlogPage({ params }: PageProps) {
           </div>
         </div>
         <div className="pt-4 isolate">
-          <RichText data={post.content} />
+          <div
+            className="markdown-body"
+            dangerouslySetInnerHTML={{ __html: result.toString() }}
+          ></div>
         </div>
       </div>
     </MaxWidthWrapper>

@@ -1,8 +1,28 @@
 import MaxWidthWrapper from "@/components/max-width-wrapper";
 import BlogList from "./BlogList";
-import postManager from "@/lib/post";
+import { getPayload } from "payload";
+import payloadConfig from "@payload-config";
+import { draftMode } from "next/headers";
 
-export default function BlogFrontPage() {
+export default async function BlogFrontPage() {
+  const { isEnabled: draft } = await draftMode();
+
+  const payload = await getPayload({ config: payloadConfig });
+  const posts = await payload.find({
+    collection: "posts",
+    draft,
+    limit: 100,
+    overrideAccess: draft,
+    pagination: false,
+    sort: "-createdAt",
+    populate: {
+      users: {
+        avatar: true,
+        username: true,
+      },
+    },
+  });
+
   return (
     <MaxWidthWrapper>
       <div className="max-w-[1300px] flex flex-col w-full py-8">
@@ -15,7 +35,7 @@ export default function BlogFrontPage() {
           </div>
         </div>
 
-        <BlogList posts={postManager.posts} tags={postManager.tagsList} />
+        <BlogList posts={posts} />
       </div>
     </MaxWidthWrapper>
   );
