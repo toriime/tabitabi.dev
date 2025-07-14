@@ -46,7 +46,8 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
         connectionString: process.env.PAYLOAD_DATABASE_URL || '',
-    }
+    },
+    push: true,
   }),
   // If you want to resize images, crop, set focal point, etc.
   // make sure to install it and pass it to the config.
