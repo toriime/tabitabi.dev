@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm generate:types && next dev",
-    "build": "pnpm generate:types && next build",
+    "build": "pnpm generate:types && next build --experimental-build-mode compile",
     "start": "pnpm generate:types && next start",
     "lint": "pnpm generate:types && next lint",
     "generate:types": "payload generate:types"
