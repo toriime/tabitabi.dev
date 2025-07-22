@@ -26,9 +26,6 @@ COPY src/payload.config.ts ./src/
 COPY src/migrations ./src/migrations
 COPY src/collections ./src/collections
 
-# Copy type generation script if needed
-COPY payload-types.ts ./src/payload-types.ts 2>/dev/null || true
-
 # Accept database URL as build argument
 ARG DATABASE_URL
 ENV PAYLOAD_DATABASE_URL=$DATABASE_URL
