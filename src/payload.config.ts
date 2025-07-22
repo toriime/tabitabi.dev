@@ -7,6 +7,7 @@ import { Users } from '@/collections/users'
 import { Media } from '@/collections/media'
 import { Tags } from '@/collections/tags'
 import { s3Storage } from '@payloadcms/storage-s3'
+import { migrations } from './migrations'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
@@ -47,8 +48,8 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
         connectionString: process.env.PAYLOAD_DATABASE_URL || '',
-        ssl: true,
     },
+    prodMigrations: migrations,
     push: true,
   }),
   // If you want to resize images, crop, set focal point, etc.
