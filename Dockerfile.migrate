@@ -6,11 +6,7 @@ RUN corepack enable
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
 
-WORKDIR /app
-
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
-RUN pnpm i --frozen-lockfile
+RUN pnpm install payload
 
 FROM base AS migration
 WORKDIR /app
@@ -25,6 +21,7 @@ COPY next.config.js ./
 COPY src/payload.config.ts ./src/
 COPY src/migrations ./src/migrations
 COPY src/collections ./src/collections
+COPY src/lib ./src/lib
 
 # Set required environment variables for Payload config
 ENV PAYLOAD_SECRET="migration-temporary-secret"
@@ -36,7 +33,6 @@ ENV PAYLOAD_S3_ENDPOINT="placeholder"
 ARG DATABASE_URL
 ENV PAYLOAD_DATABASE_URL=$DATABASE_URL
 
-RUN pnpm install payload
 
 # Run migrations
 ENTRYPOINT ["pnpx", "payload", "migrate"]
