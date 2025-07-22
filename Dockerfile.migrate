@@ -27,8 +27,7 @@ COPY src/migrations ./src/migrations
 COPY src/collections ./src/collections
 
 # Copy type generation script if needed
-COPY payload-types.ts ./payload-types.ts 2>/dev/null || true
-COPY src/payload-types.ts ./src/payload-types.ts 2>/dev/null || true
+COPY payload-types.ts ./src/payload-types.ts 2>/dev/null || true
 
 # Accept database URL as build argument
 ARG DATABASE_URL
@@ -43,4 +42,4 @@ ENV PAYLOAD_S3_REGION="placeholder"
 ENV PAYLOAD_S3_ENDPOINT="placeholder"
 
 # Run migrations
-CMD ["npm", "run", "payload", "migrate"]
+ENTRYPOINT ["npm", "run", "payload", "migrate"]
