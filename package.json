@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm generate:types && next dev",
+    "move-types": "mv ./payload-types.ts ./src/payload-types.ts",
     "build": "pnpm generate:types && next build --experimental-build-mode compile",
     "start": "pnpm generate:types && next start",
     "lint": "pnpm generate:types && next lint",
-    "generate:types": "payload generate:types"
+    "generate:types": "payload generate:types && pnpm move-types"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.47.0",
@@ -58,6 +59,10 @@
     "overrides": {
       "@types/react": "19.1.8",
       "@types/react-dom": "19.1.6"
-    }
+    },
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
   }
 }

@@ -9,6 +9,23 @@ services:
       - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - tabitabi
+  s3:
+    build:
+      dockerfile: s3.dockerfile
+    ports:
+      - "4569:4569"
+    volumes:
+      - "./packages/s3rver/tabitabi:/home/app/s3rver/tabitabi"
+    environment:
+      - NODE_OPTIONS=
+    networks:
+      - tabitabi
 
 volumes:
   db_data:
+
+networks:
+  tabitabi:
+    driver: bridge

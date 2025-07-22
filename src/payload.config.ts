@@ -27,6 +27,7 @@ export default buildConfig({
         },
         region: process.env.PAYLOAD_S3_REGION || '',
         endpoint: process.env.PAYLOAD_S3_ENDPOINT || '',
+        forcePathStyle: true,
       }
     })
   ],
