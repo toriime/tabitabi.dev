@@ -8,7 +8,7 @@ WORKDIR /app
 RUN apk add --no-cache libc6-compat
 
 RUN pnpm init
-RUN pnpm add payload tailwind-merge clsx
+RUN pnpm add payload tailwind-merge clsx sharp
 
 FROM base AS migration
 WORKDIR /app
