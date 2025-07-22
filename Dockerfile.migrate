@@ -26,10 +26,6 @@ COPY src/payload.config.ts ./src/
 COPY src/migrations ./src/migrations
 COPY src/collections ./src/collections
 
-# Accept database URL as build argument
-ARG DATABASE_URL
-ENV PAYLOAD_DATABASE_URL=$DATABASE_URL
-
 # Set required environment variables for Payload config
 ENV PAYLOAD_SECRET="migration-temporary-secret"
 ENV PAYLOAD_S3_BUCKET="placeholder"
@@ -37,6 +33,10 @@ ENV PAYLOAD_S3_ACCESS_KEY_ID="placeholder"
 ENV PAYLOAD_S3_SECRET_ACCESS_KEY="placeholder"
 ENV PAYLOAD_S3_REGION="placeholder"
 ENV PAYLOAD_S3_ENDPOINT="placeholder"
+ARG DATABASE_URL
+ENV PAYLOAD_DATABASE_URL=$DATABASE_URL
+
+RUN pnpm install payload
 
 # Run migrations
-ENTRYPOINT ["npm", "run", "payload", "migrate"]
+ENTRYPOINT ["pnpx", "payload", "migrate"]
