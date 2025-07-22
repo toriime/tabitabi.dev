@@ -1,0 +1,46 @@
+FROM node:24-alpine AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+
+FROM base AS deps
+RUN apk add --no-cache libc6-compat
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm i --frozen-lockfile
+
+FROM base AS migration
+WORKDIR /app
+
+# Copy node_modules from deps stage
+COPY --from=deps /app/node_modules ./node_modules
+
+# Copy only necessary files for migrations
+COPY package.json ./
+COPY tsconfig.json ./
+COPY next.config.js ./
+COPY src/payload.config.ts ./src/
+COPY src/migrations ./src/migrations
+COPY src/collections ./src/collections
+
+# Copy type generation script if needed
+COPY payload-types.ts ./payload-types.ts 2>/dev/null || true
+COPY src/payload-types.ts ./src/payload-types.ts 2>/dev/null || true
+
+# Accept database URL as build argument
+ARG DATABASE_URL
+ENV PAYLOAD_DATABASE_URL=$DATABASE_URL
+
+# Set required environment variables for Payload config
+ENV PAYLOAD_SECRET="migration-temporary-secret"
+ENV PAYLOAD_S3_BUCKET="placeholder"
+ENV PAYLOAD_S3_ACCESS_KEY_ID="placeholder"
+ENV PAYLOAD_S3_SECRET_ACCESS_KEY="placeholder"
+ENV PAYLOAD_S3_REGION="placeholder"
+ENV PAYLOAD_S3_ENDPOINT="placeholder"
+
+# Run migrations
+CMD ["npm", "run", "payload", "migrate"]
