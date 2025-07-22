@@ -48,7 +48,6 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
         connectionString: process.env.PAYLOAD_DATABASE_URL || '',
-        ssl: true,
     },
     prodMigrations: migrations,
     push: true,
