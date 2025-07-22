@@ -8,7 +8,8 @@ WORKDIR /app
 RUN apk add --no-cache libc6-compat
 
 RUN pnpm init
-RUN pnpm add payload tailwind-merge clsx sharp
+RUN node -e "const pkg = JSON.parse(require('fs').readFileSync('package.json', 'utf8')); pkg.scripts = pkg.scripts || {}; pkg.scripts.payload = 'cross-env PAYLOAD_CONFIG_PATH=src/payload.config.ts payload'; require('fs').writeFileSync('package.json', JSON.stringify(pkg, null, 2));"
+RUN pnpm add payload tailwind-merge clsx sharp cross-env
 
 FROM base AS migration
 WORKDIR /app
