@@ -38,4 +38,4 @@ ENV PAYLOAD_DATABASE_URL=$DATABASE_URL
 
 
 # Run migrations
-ENTRYPOINT ["pnpx", "payload", "migrate"]
+ENTRYPOINT ["pnpm", "run", "payload", "migrate"]
