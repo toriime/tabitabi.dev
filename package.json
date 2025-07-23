@@ -18,6 +18,7 @@
     "@payloadcms/richtext-lexical": "^3.47.0",
     "@payloadcms/storage-s3": "^3.47.0",
     "@radix-ui/react-select": "^2.0.0",
+    "@sentry/nextjs": "^9.40.0",
     "clsx": "^2.0.0",
     "dompurify": "^3.0.6",
     "framer-motion": "^10.16.4",
@@ -61,6 +62,7 @@
       "@types/react-dom": "19.1.6"
     },
     "onlyBuiltDependencies": [
+      "@sentry/cli",
       "esbuild",
       "sharp"
     ]
