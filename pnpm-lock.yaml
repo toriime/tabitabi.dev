@@ -93,6 +93,9 @@ importers:
       remark-rehype:
         specifier: ^11.0.0
         version: 11.0.0
+      require-in-the-middle:
+        specifier: ^7.5.2
+        version: 7.5.2
       sharp:
         specifier: ^0.34.2
         version: 0.34.2
@@ -8630,7 +8633,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/typescript-estree': 8.36.0(typescript@5.2.2)
       '@typescript-eslint/utils': 8.36.0(eslint@8.52.0)(typescript@5.2.2)
-      debug: 4.3.4
+      debug: 4.4.1
       eslint: 8.52.0
       ts-api-utils: 2.1.0(typescript@5.2.2)
       typescript: 5.2.2
@@ -8645,7 +8648,7 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 6.9.1
       '@typescript-eslint/visitor-keys': 6.9.1
-      debug: 4.3.4
+      debug: 4.4.1
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.4
@@ -11051,7 +11054,7 @@ snapshots:
   micromark@4.0.0:
     dependencies:
       '@types/debug': 4.1.10
-      debug: 4.3.4
+      debug: 4.4.1
       decode-named-character-reference: 1.0.2
       devlop: 1.1.0
       micromark-core-commonmark: 2.0.0
