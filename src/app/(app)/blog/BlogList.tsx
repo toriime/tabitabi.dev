@@ -1,13 +1,5 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import React, { useState } from "react";
 import Card from "@/components/card";
 import { PaginatedDocs } from "payload"
 import { Media, Post, PostsSelect, Tag, User } from "@/payload-types"

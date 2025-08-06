@@ -8,6 +8,7 @@ import { Media } from '@/collections/media'
 import { Tags } from '@/collections/tags'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { migrations } from './migrations'
+import { Pages } from './collections/pages'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
@@ -38,7 +39,8 @@ export default buildConfig({
     Users,
     Media,
     Posts,
-    Tags
+    Tags,
+    Pages
   ],
 
   // Your Payload secret - should be a complex and secure string, unguessable

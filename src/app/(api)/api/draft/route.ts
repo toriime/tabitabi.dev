@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 
 const collectionUrls: { [key: string]: string } = {
   posts: "/blog",
+  pages: "",
 };
 
 export async function GET(request: Request) {

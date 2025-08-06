@@ -3,6 +3,8 @@ import BlogList from "./BlogList";
 import { getPayload } from "payload";
 import payloadConfig from "@payload-config";
 import { draftMode } from "next/headers";
+import { Suspense } from "react";
+import BlogListLoading from "./_components/loading";
 
 export default async function BlogFrontPage() {
   const { isEnabled: draft } = await draftMode();
@@ -35,7 +37,9 @@ export default async function BlogFrontPage() {
           </div>
         </div>
 
-        <BlogList posts={posts} />
+        <Suspense fallback={<BlogListLoading />}>
+          <BlogList posts={posts} />
+        </Suspense>
       </div>
     </MaxWidthWrapper>
   );

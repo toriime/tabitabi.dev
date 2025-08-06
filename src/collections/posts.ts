@@ -73,6 +73,13 @@ export const Posts: CollectionConfig = {
       type: "richText",
       required: true,
     },
+    {
+      name: "publishedAt",
+      type: "date",
+      admin: {
+        position: "sidebar",
+      },
+    },
   ],
   versions: {
     drafts: {

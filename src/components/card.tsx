@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Media, Tag, User } from "@/payload-types"
@@ -26,12 +26,14 @@ const Card = ({
   date,
   authors,
 }: CardProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <Link data-umami-event={`${link}-clicked`} href={link}>
       <div className="flex flex-col gap-3 items-start rounded-lg border-slate-600/80 hover:bg-slate-300/5 transition-colors duration-200 border shadow-sm w-full overflow-hidden">
-        <div className="w-full">
+        <div className="w-full relative">
           <button disabled={disabled}>
-            <Image src={image} alt="post image" width={1920} height={1080} />
+            <Image src={image} alt="post image" className={`bg-slate-600 ${isLoading ? "animate-pulse" : ""}`} width={1920} height={1080} onLoad={() => setIsLoading(false)} />
           </button>
         </div>
         <div className="flex flex-col p-3 gap-2 w-full">

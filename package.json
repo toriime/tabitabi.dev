@@ -12,11 +12,11 @@
     "generate:types": "payload generate:types && pnpm move-types"
   },
   "dependencies": {
-    "@payloadcms/db-postgres": "^3.47.0",
-    "@payloadcms/live-preview-react": "^3.47.0",
-    "@payloadcms/next": "^3.47.0",
-    "@payloadcms/richtext-lexical": "^3.47.0",
-    "@payloadcms/storage-s3": "^3.47.0",
+    "@payloadcms/db-postgres": "^3.49.1",
+    "@payloadcms/live-preview-react": "^3.49.1",
+    "@payloadcms/next": "^3.49.1",
+    "@payloadcms/richtext-lexical": "^3.49.1",
+    "@payloadcms/storage-s3": "^3.49.1",
     "@radix-ui/react-select": "^2.0.0",
     "@sentry/nextjs": "^9.40.0",
     "clsx": "^2.0.0",
@@ -27,7 +27,7 @@
     "lucide-react": "^0.291.0",
     "next": "15.3.5",
     "nextjs-toploader": "^1.6.4",
-    "payload": "^3.47.0",
+    "payload": "^3.49.1",
     "react": "19.1.0",
     "react-dom": "19.1.0",
     "rehype-autolink-headings": "^7.0.0",
@@ -64,6 +64,7 @@
     },
     "onlyBuiltDependencies": [
       "@sentry/cli",
+      "@swc/core",
       "esbuild",
       "sharp"
     ]
