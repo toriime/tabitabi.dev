@@ -69,7 +69,7 @@ const NavbarClient = ({ links }: { links: Nav['items'] }) => {
                 <Link
                   href={link.url || '#'}
                   // data-umami-event={link.analytic}
-                  className="border-borderLight h-full flex justify-center items-center py-2 px-4 rounded-full transition-colors text-slate-300"
+                  className="border-borderLight h-full flex justify-center text-sm items-center py-2 px-4 rounded-full transition-colors text-slate-300"
                   onMouseOver={(ev) => handleMouseOver(ev)}
                   key={index}
                 >
