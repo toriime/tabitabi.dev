@@ -1,4 +1,4 @@
-import { generateDraftPreviewURL } from "@/lib/utils"
+import { generateDraftPreviewURL } from "@/lib/utils-client"
 import { CollectionConfig } from "payload";
 
 export const Posts: CollectionConfig = {

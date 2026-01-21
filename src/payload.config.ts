@@ -9,6 +9,9 @@ import { Tags } from '@/collections/tags'
 import { s3Storage } from '@payloadcms/storage-s3'
 import { migrations } from './migrations'
 import { Pages } from './collections/pages'
+import { Navbar } from './collections/navbar'
+import { Footer } from './collections/footer'
+import path from 'path'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
@@ -32,6 +35,11 @@ export default buildConfig({
         forcePathStyle: true,
       }
     })
+  ],
+
+  globals: [
+    Navbar,
+    Footer
   ],
 
   // Define and configure your collections in this array
@@ -59,4 +67,7 @@ export default buildConfig({
   // This is optional - if you don't need to do these things,
   // you don't need it!
   sharp,
+  typescript: {
+    outputFile: path.resolve(__dirname, 'payload-types.ts'),
+  }
 })

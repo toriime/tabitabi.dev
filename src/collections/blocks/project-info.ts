@@ -2,6 +2,7 @@ import { Block } from "payload";
 
 export const projectInfoCard: Block = {
   slug: "projectInfoCard",
+  interfaceName: "ProjectInfoCardBlock",
   fields: [
     {
       name: "icon",
@@ -41,6 +42,7 @@ export const projectInfoCard: Block = {
 
 export const projectInfo: Block = {
   slug: "projectInfo",
+  interfaceName: "ProjectInfoBlock",
   fields: [
     {
       name: "title",

@@ -1,7 +1,9 @@
-import { generateDraftPreviewURL } from "@/lib/utils";
+import { generateDraftPreviewURL } from "@/lib/utils-client";
 import type { CollectionConfig } from "payload";
 import { hero } from "./blocks/hero";
 import { projectInfo } from "./blocks/project-info"
+import { text } from "./blocks/text"
+import { pageHeader } from "./blocks/page-header"
 
 export const Pages: CollectionConfig = {
   slug: "pages",
@@ -35,6 +37,11 @@ export const Pages: CollectionConfig = {
       required: true,
     },
     {
+      name: "slug",
+      type: "text",
+      required: true,
+    },
+    {
       type: "tabs",
       tabs: [
         {
@@ -43,7 +50,7 @@ export const Pages: CollectionConfig = {
             {
               name: "layout",
               type: "blocks",
-              blocks: [hero, projectInfo],
+              blocks: [hero, projectInfo, text, pageHeader],
               required: true,
             },
           ],
