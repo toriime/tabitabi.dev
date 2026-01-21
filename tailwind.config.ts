@@ -26,5 +26,11 @@ const config: Config = {
       },
     },
   },
+  safelist: [
+    'text-xl',
+    'text-2xl',
+    'text-3xl',
+    'text-4xl',
+  ]
 };
 export default config;

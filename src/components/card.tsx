@@ -1,25 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Media, Tag, User } from "@/payload-types"
 
 interface CardProps {
   disabled?: boolean;
   title: string;
-  authors: {
-    username: string;
-    avatar: string;
-  }[];
+  authors: User[];
   image: string;
   link: string;
   date: Date;
-  tags: string[];
+  tags?: Tag[];
 }
 
 interface AuthorsProps {
-  authors: {
-    username: string;
-    avatar: string;
-  }[];
+  authors: User[];
 }
 
 const Card = ({
@@ -27,16 +22,18 @@ const Card = ({
   title,
   image,
   link,
-  tags,
+  tags = [],
   date,
   authors,
 }: CardProps) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <Link data-umami-event={`${link}-clicked`} href={link}>
       <div className="flex flex-col gap-3 items-start rounded-lg border-slate-600/80 hover:bg-slate-300/5 transition-colors duration-200 border shadow-sm w-full overflow-hidden">
-        <div className="w-full">
+        <div className="w-full relative">
           <button disabled={disabled}>
-            <Image src={image} alt="post image" width={1920} height={1080} />
+            <Image src={image} alt="post image" className={`bg-slate-600 ${isLoading ? "animate-pulse" : ""}`} width={1920} height={1080} onLoad={() => setIsLoading(false)} />
           </button>
         </div>
         <div className="flex flex-col p-3 gap-2 w-full">
@@ -46,7 +43,7 @@ const Card = ({
                 key={index}
                 className="text-slate-300/60 text-sm rounded-full bg-slate-300/5 py-1 px-2 border-slate-600/80 border"
               >
-                {tag}
+                {tag.name}
               </span>
             ))}
           </div>
@@ -68,7 +65,7 @@ const CardAuthors = ({ authors }: AuthorsProps) => (
     {authors.map((member, index) => (
       <Image
         key={member.username}
-        src={member.avatar}
+        src={(member.avatar! as Media).url!}
         className="rounded-full w-7 h-7 absolute"
         style={{ left: `${index * 1.1}rem`, zIndex: authors.length + index }}
         alt="author avatar"

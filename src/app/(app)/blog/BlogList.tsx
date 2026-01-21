@@ -1,36 +1,29 @@
 "use client";
-import React, { useEffect, useMemo, useState } from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Post } from "@/lib/post";
+import React, { useState } from "react";
 import Card from "@/components/card";
+import { PaginatedDocs } from "payload"
+import { Media, Post, PostsSelect, Tag, User } from "@/payload-types"
 
 interface BlogListProps {
-  posts: Post[];
-  tags: string[];
+  posts: PaginatedDocs<Post>;
+  tags?: string[];
 }
 
-const BlogList = ({ posts, tags }: BlogListProps) => {
+const BlogList = ({ posts, tags = [] }: BlogListProps) => {
   const [tag, setTag] = useState<string | undefined>(undefined);
   const [active, setActive] = useState<boolean>(false);
 
-  const filteredPosts = useMemo(() => {
-    if (!tag) {
-      return posts;
-    }
+  // const filteredPosts = useMemo(() => {
+  //   if (!tag) {
+  //     return posts;
+  //   }
 
-    return posts.filter((post) => post.tags.includes(tag));
-  }, [posts, tag]);
+  //   return posts.filter((post) => post.tags.includes(tag));
+  // }, [posts, tag]);
 
   return (
     <>
-      <div className="flex w-full items-center justify-start pl-4 pb-5 md:pl-0 md:pb-0 md:justify-end md:pr-4">
+      {/* <div className="flex w-full items-center justify-start pl-4 pb-5 md:pl-0 md:pb-0 md:justify-end md:pr-4">
         <Select
           onValueChange={(value) => {
             if (value === "All") {
@@ -58,18 +51,18 @@ const BlogList = ({ posts, tags }: BlogListProps) => {
             </SelectGroup>
           </SelectContent>
         </Select>
-      </div>
+      </div> */}
 
       <div className="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4">
-        {filteredPosts.map((post, index) => (
+        {posts.docs.map((post, index) => (
           <Card
             disabled={active}
             key={index}
-            authors={post.authors}
-            date={new Date(post.date)}
-            image={post.image!}
+            authors={post.authors as User[]}
+            date={new Date(post.createdAt)}
+            image={(post.image as Media).url!}
             link={`/blog/${post.slug}`}
-            tags={post.tags}
+            tags={post.tags as Tag[]}
             title={post.title}
           />
         ))}
