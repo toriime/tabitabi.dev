@@ -219,7 +219,8 @@ export interface Tag {
 export interface Page {
   id: number;
   title: string;
-  layout: (HeroBlock | ProjectInfoBlock)[];
+  slug: string;
+  layout: (HeroBlock | ProjectInfoBlock | TextBlock | PageHeaderBlock)[];
   meta?: {};
   publishedAt?: string | null;
   updatedAt: string;
@@ -265,6 +266,41 @@ export interface ProjectInfoCardBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'projectInfoCard';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextBlock".
+ */
+export interface TextBlock {
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'text';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageHeaderBlock".
+ */
+export interface PageHeaderBlock {
+  title: string;
+  subtitle?: string | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'page-header';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -409,11 +445,14 @@ export interface TagsSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
+  slug?: T;
   layout?:
     | T
     | {
         hero?: T | HeroBlockSelect<T>;
         projectInfo?: T | ProjectInfoBlockSelect<T>;
+        text?: T | TextBlockSelect<T>;
+        'page-header'?: T | PageHeaderBlockSelect<T>;
       };
   meta?: T | {};
   publishedAt?: T;
@@ -456,6 +495,25 @@ export interface ProjectInfoCardBlockSelect<T extends boolean = true> {
   icon?: T;
   title?: T;
   description?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextBlock_select".
+ */
+export interface TextBlockSelect<T extends boolean = true> {
+  content?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PageHeaderBlock_select".
+ */
+export interface PageHeaderBlockSelect<T extends boolean = true> {
+  title?: T;
+  subtitle?: T;
   id?: T;
   blockName?: T;
 }

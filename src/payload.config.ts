@@ -12,6 +12,7 @@ import { Pages } from './collections/pages'
 import { Navbar } from './collections/navbar'
 import { Footer } from './collections/footer'
 import path from 'path'
+import { fileURLToPath } from 'url'
 
 export default buildConfig({
   // If you'd like to use Rich Text, pass your editor here
@@ -68,6 +69,6 @@ export default buildConfig({
   // you don't need it!
   sharp,
   typescript: {
-    outputFile: path.resolve(__dirname, 'payload-types.ts'),
+    outputFile: path.resolve(path.dirname(fileURLToPath(import.meta.url)), 'payload-types.ts'),
   }
 })

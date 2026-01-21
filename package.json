@@ -5,11 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm generate:types && next dev",
-    "move-types": "mv ./payload-types.ts ./src/payload-types.ts",
     "build": "pnpm generate:types && next build --experimental-build-mode compile",
     "start": "pnpm generate:types && next start",
     "lint": "pnpm generate:types && next lint",
-    "generate:types": "payload generate:types && pnpm move-types"
+    "generate:types": "payload generate:types"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.49.1",
