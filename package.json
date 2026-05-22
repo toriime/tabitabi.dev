@@ -24,7 +24,7 @@
     "graphql": "^16.14.0",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.291.0",
-    "next": "15.5.18",
+    "next": "16.2.6",
     "nextjs-toploader": "^1.6.4",
     "payload": "^3.84.1",
     "react": "19.2.6",
