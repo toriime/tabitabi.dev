@@ -7,7 +7,7 @@
     "dev": "pnpm generate:types && next dev",
     "build": "pnpm generate:types && next build --experimental-build-mode compile",
     "start": "pnpm generate:types && next start",
-    "lint": "pnpm generate:types && next lint",
+    "lint": "pnpm generate:types && eslint .",
     "generate:types": "payload generate:types"
   },
   "dependencies": {
@@ -49,8 +49,8 @@
     "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
     "autoprefixer": "^10.5.0",
-    "eslint": "^8",
-    "eslint-config-next": "15.3.5",
+    "eslint": "^9.39.4",
+    "eslint-config-next": "16.2.6",
     "postcss": "^8.5.15",
     "tailwindcss": "^3",
     "typescript": "^5"
